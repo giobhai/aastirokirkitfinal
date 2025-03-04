@@ -1,16 +1,15 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "index.php",
-      "use": "vercel-php"
+  "functions": {
+    "api/proxy.js": {
+      "runtime": "nodejs18.x",
+      "regions": ["hkg1"]
     }
-  ],
+  },
   "routes": [
-  {
-    "src": "/(.*)",
-    "dest": "/index.php?get=$1"
-  }
-],
-  "regions": ["sin1"]
+    {
+      "src": "/(.*)",
+      "dest": "/api/proxy.js?get=$1"
+    }
+  ]
 }
